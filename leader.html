@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>Top 10 Stats:</title>
+<script src="./Chart.js"></script>
+</head>
+<body>
+<h3>Number of attempts:</h3><br>
+<canvas id="leader_attempts" width="800" height="400"></canvas><br><br>
+<h3>Hints Distribution:</h3><br>
+<canvas id="hints_top10" width="800" height="400"></canvas><br><br>
+<h3>Credits Distribution:</h3><br>
+<canvas id="credits_top10" width="800" height="400"></canvas><br><br>
+</body>
+<script>
+////////////////////////Number of attempts/////////////////////
+var ctx_leader_ques=document.getElementById("leader_attempts").getContext("2d");
+var data_leader_ques = {
+    labels: ["1", "2", "3", "4", "5", "6", "7","8","9","10"],
+    datasets: [
+        {
+            label: "Number of attempts on each question",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [ 755,92,169,39,216,100,125,30,36,96]
+        },
+            ]
+};
+var leader_ques_Chart = new Chart(ctx_leader_ques).Line(data_leader_ques);
+//////////////////Hints///////////////////////
+var ctx_leader_hints = document.getElementById("hints_top10").getContext("2d");
+var data_leader_hints = {
+    labels: ["1", "2", "3", "4", "5", "6", "7","8","9","10"],
+	datasets: [
+        {
+            label: "Hints Distribution",
+            fillColor: "rgba(151,187,205,0.5)",
+            strokeColor: "rgba(151,187,205,0.8)",
+            highlightFill: "rgba(151,187,205,0.75)",
+            highlightStroke: "rgba(151,187,205,1)",
+            data: [1,1,2,1,1,2,3,2,1,2]
+        },
+        
+    ]
+};
+var LeaderHintsChart = new Chart(ctx_leader_hints).Bar(data_leader_hints,{
+barShowStroke:false,
+barStrokeWidth:0.1});
+////////////////////////Credits Distribution/////////////////////
+var ctx_leader_credits=document.getElementById("credits_top10").getContext("2d");
+var data_leader_ques = {
+    labels: ["1", "2", "3", "4", "5", "6", "7","8","9","10"],
+    datasets: [
+        {
+            label: "Number of attempts on each question",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [500,550,650,400,350,650,450,200,850,650]
+        },
+            ]
+};
+var leader_ques_Chart = new Chart(ctx_leader_credits).Line(data_leader_ques);
+</script>

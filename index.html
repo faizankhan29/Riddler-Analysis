@@ -1,0 +1,156 @@
+<html>
+<head>
+<title>Riddler Analysis</title>
+<script src="./Chart.js"></script>
+</head>
+<body>
+<a href="./leader.html">Leaders</a>
+<h3>Counter:</h3>
+<canvas id="counter" width="400" height="400"></canvas><br><br>
+<h3>Theme Distribution:</h3>
+<canvas id="theme" width="400" height="400"></canvas><br><br>
+<h3>Number of users on each question:</h3><br>
+<canvas id="user_ques" width="800" height="400"></canvas>
+<h3>Hints Distribution:</h3><br>
+<canvas id="hints" width="400" height="400"></canvas>
+<h3>Credits Distribution:</h3><br>
+<canvas id="credits" width="800" height="400"></canvas>
+<h3>Number of attempts on each question:</h3><br>
+<canvas id="attempts" width="800" height="400"></canvas>
+<h3>Number of users solved each question:</h3><br>
+<canvas id="solved" width="800" height="400"></canvas>
+</body>
+<script>
+//////////////////////////Counter//////////////////////////
+var ctx_counter = document.getElementById("counter").getContext("2d");
+var data = [
+    {
+        value: 629,
+        color:"#F7464A",
+        highlight: "#FF5A5E",
+        label: "Vitians"
+    },
+    {
+        value: 72,
+        color: "#46BFBD",
+        highlight: "#5AD3D1",
+        label: "Non-vitians"
+    }
+]        
+var myPieChart = new Chart(ctx_counter).Pie(data);
+
+//////////////////////////Theme Distribution//////////////////////////
+var ctx_theme = document.getElementById("theme").getContext("2d");
+var data_theme = {
+    labels: ["Dark", "Light"],
+    datasets: [
+        {
+            label: "Theme Distribution",
+            fillColor: "rgba(151,187,205,0.5)",
+            strokeColor: "rgba(151,187,205,0.8)",
+            highlightFill: "rgba(151,187,205,0.75)",
+            highlightStroke: "rgba(151,187,205,1)",
+            data: [377,324]
+        },
+        
+    ]
+};
+var ThemeChart = new Chart(ctx_theme).Bar(data_theme,{
+barShowStroke:false,
+barStrokeWidth:0.1});
+/////////////Number of users on each question/////////////////
+var ctx_user_ques=document.getElementById("user_ques").getContext("2d");
+var data_user_ques = {
+    labels: ["1", "2", "3", "4", "5", "6", "7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26"],
+    datasets: [
+        {
+            label: "Number of users on each question",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [ 288,80,21,14,6,23,17,4,15,9,47,23,14,14,14,18,16, 2,7,14,6,14,17,18]
+        },
+            ]
+};
+var Users_ques_Chart = new Chart(ctx_user_ques).Line(data_user_ques);
+//////////////////////////Hints Distribution//////////////////////////
+var ctx_hints = document.getElementById("hints").getContext("2d");
+var data_hints = {
+    labels: ["1", "2","3","4"],
+    datasets: [
+        {
+            label: "Hints Distribution",
+            fillColor: "rgba(151,187,205,0.5)",
+            strokeColor: "rgba(151,187,205,0.8)",
+            highlightFill: "rgba(151,187,205,0.75)",
+            highlightStroke: "rgba(151,187,205,1)",
+            data: [480,104,76,31,10]
+        },
+        
+    ]
+};
+var HintsChart = new Chart(ctx_hints).Bar(data_hints,{
+barShowStroke:false,
+barStrokeWidth:0.1});
+//////////////////////////Credits Distribution//////////////////////////
+var ctx_credits=document.getElementById("credits").getContext("2d");
+var data_credits = {
+    labels: ["-100","-50","0","50","100","150","200","250","300","350","400","450","500","550",
+	"600","650","700","750","800","850","900","1000","1050","1250"],
+    datasets: [
+        {
+            label: "Credits Distribution",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [1,5,303,99,40,26,31,36,21,18,18,9,25,15,10,10,6,10,6,2,2,5,2]
+        },
+            ]
+};
+var Credits_Chart = new Chart(ctx_credits).Line(data_credits);
+////////////////////////Attempts Distribution//////////////////////////
+var ctx_attempts=document.getElementById("attempts").getContext("2d");
+var data_attempts = {
+    labels: ["1", "2", "3", "4", "5", "6", "7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"],
+    datasets: [
+        {
+            label: "Attempts Distribution",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [ 13275,9414,3854,1608,2057,1724,2202,4486,3960,1673,8477,3030,3686,2737,1452,907,3606,1306,2520,873,757,1411,1378,388,5105,1851,0,0,0,0,0]
+        },
+            ]
+};
+var Attempts_Chart = new Chart(ctx_attempts).Line(data_attempts);
+
+////////////////Solved questions////////////////////
+var ctx_solved = document.getElementById("solved").getContext("2d");
+var data_solved = {
+    labels: ["1", "2", "3", "4", "5", "6", "7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"],
+    datasets: [
+        {
+            label: "Solved Distribution",
+            fillColor: "rgba(151,187,205,0.5)",
+            strokeColor: "rgba(151,187,205,0.8)",
+            highlightFill: "rgba(151,187,205,0.75)",
+            highlightStroke: "rgba(151,187,205,1)",
+            data: [417,335,314,301,294,271,254,250,235,226,179,156,141,126,112,94,78,76,69,69,55,49,35,35,18,0,0,0,0,0,0]
+        },
+        
+    ]
+};
+var SolvedChart = new Chart(ctx_solved).Bar(data_solved,{
+barShowStroke:false,
+barStrokeWidth:0.1});
+</script>
+</html>
